@@ -82,7 +82,7 @@ user.profile.login
 :::
 
 ```{note}
-The `gw-admin` attribute is only required if you want to grant admin status via SSO; adjust `foo-admin-group` to match the Okta group that should receive Gravwell admin rights. See [Granting Admin Status](#granting-admin-status) for more details.
+The `gw-admin` attribute is only required if you want to grant admin status via SSO; adjust `foo-admin-group` to match the Okta group that should receive Gravwell admin rights. See [Granting Admin Status](#okta-granting-admin-status) for more details.
 ```
 ::::
 
@@ -173,6 +173,7 @@ The remaining config options tell Gravwell how to map attributes in the SSO requ
 
 Once you've saved the configuration file, you can restart the Gravwell webserver.
 
+(okta-granting-admin-status)=
 ### Granting Admin Status
 
 The Gravwell SSO configuration enables setting a users admin status via SAML attributes. This is done using the `Admin-Attribute`.  The `Admin-Attribute` field expects a boolean value in the form of either `true` or `false`.  It is possible to specify this attribute individually for each user in the Okta admin control panel, but a much easier method is to just define a new group and tell Okta to deliver a boolean in this field if a user is a member of the group in the Okta application `ATTRIBUTE STATEMENTS` configuration.

@@ -194,19 +194,37 @@ a copy button to them.
   margin-bottom: 1rem;
 }
 
-.copy-pairs > p {
-  margin: 0;
-}
-
+.copy-pairs > p,
+.copy-pairs > div,
 .copy-pairs div.highlight {
   margin: 0;
 }
 
-/* Wrap long values instead of giving every value its own scrollbar. */
+/*
+Wrap long values instead of giving every value its own scrollbar, and keep the
+text clear of the copy button that sphinx-copybutton parks in the top right.
+*/
 .copy-pairs div.highlight pre {
-  padding: 0.3rem 0.6rem;
+  padding: 0.45rem 2.4rem 0.45rem 0.7rem;
+  /* Leave room for the copy button, which is 1.7em tall at a 0.3em offset. */
+  min-height: 2.3em;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+/*
+Reveal the copy button for the pair being hovered, rather than every button in
+the block at once (which is what the broader `div.docutils:hover` rule above
+would otherwise do, since the container is itself a `div.docutils`).
+*/
+div.copy-pairs:hover button.copybtn {
+  opacity: 0;
+}
+
+.copy-pairs div.highlight:hover button.copybtn,
+.copy-pairs button.copybtn:focus,
+.copy-pairs button.copybtn.success {
+  opacity: 1;
 }
 
 /* Stack the pairs on narrow screens, where two columns don't fit. */
